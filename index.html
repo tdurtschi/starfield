@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    body {
+        padding: 0;
+        margin: 0;
+        height: 1000vh;
+        overflow-x:hidden;
+        animation-name: MOVE-BG;
+        animation-duration: 100s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    #starfield {
+        background-color:black;
+    }
+
+    @keyframes MOVE-BG {
+      from {
+        transform: translateX(0);
+      }
+      to { 
+        transform: translateX(-187%);
+      }
+    }
+  </style>
+</head>
+
+<body>
+    <script type="text/javascript" src="starfield.js"></script>
+</body>
+
+</html>
