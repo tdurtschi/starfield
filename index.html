@@ -4,11 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <style>
-    body {
+    html, body {
       padding: 0;
       margin: 0;
       background-color: black;
-      color: rgb(147, 154, 187);
+      color: #DDD;
+      min-height: 100%;
     }
 
     .content {
@@ -17,24 +18,24 @@
       align-items: center;
       position: relative;
       z-index: 10;
+      height: 100%;
+      min-height: 100vh;
     }
 
     #bg-container {
-      z-index: 1;
+      z-index: -1;
       position:absolute;
       overflow-y: hidden;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 500vh;
+      height: 100%;
+      width: 100%;
     }
 
     #bg {
-      width: 100vw;
-      height: 700vh;
-      overflow-x: hidden;
+      height: calc(100% + 768px);
       animation-name: MOVE-BG;
-      animation-duration: 220s;
+      animation-duration: 407s;
       animation-timing-function: linear;
       animation-iteration-count: infinite;
     }
@@ -48,15 +49,25 @@
         transform: translateY(-768px);
       }
     }
+
+    h1 {
+      color: #762ebe;
+    }
+
+    hr {
+      background-color: white;
+      width:70%;
+    }
   </style>
 </head>
 
 <body>
-  <div id="bg-container">
-    <div id="bg"></div>
-  </div>
   <div class="content">
-    <!-- <h1>Hello World</h1> -->
+    <div id="bg-container">
+      <div id="bg"></div>
+    </div>
+    <h1>Starry Night</h1>
+    <hr/>
   </div>
   <script type="text/javascript" src="starfield.js"></script>
 </body>

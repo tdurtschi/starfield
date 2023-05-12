@@ -1,6 +1,7 @@
 const FILL_RATIO = 0.8
 const starColors = [
     "#FFFFFF",
+    "#FFFFFF",
     "#9a99cb",
     "#333366",
     "#777777",
@@ -9,31 +10,31 @@ const starColors = [
     "#310133"
 ];
 
-const canvas = document.createElement("canvas");//document.getElementById("starfield");
-canvas.height = 768;
-canvas.width = 1024;
-const {width: clientWidth, height: clientHeight} = canvas;
+const canvas = document.createElement("canvas");
+const scale = window.devicePixelRatio;
+canvas.width = Math.floor(1024 * scale);
+canvas.height = Math.floor(768 * scale);
+const {width, height} = canvas;
 
-// @ts-ignore
 const ctx = canvas.getContext("2d");
+ctx.scale(scale, scale);
 ctx.fillStyle = "#000000";
-ctx.fillRect(0, 0, clientWidth, clientHeight);
+ctx.fillRect(0, 0, width, height);
+ctx.translate(0.5, 0.5);
 
-
-for(let i = 0; i < clientWidth * FILL_RATIO; i++){
+for(let i = 0; i < width * FILL_RATIO; i++){
     const color = starColors[Math.floor(Math.random() * starColors.length)]
     ctx.fillStyle = color;
     
-    const randX = Math.floor(Math.random() * clientWidth) + 0.5;
-    const randY = Math.floor(Math.random() * clientHeight) + 0.5;
+    const randX = Math.floor(Math.random() * width);
+    const randY = Math.floor(Math.random() * height);
     const size = Math.random() > 0.95
         ? Math.random() > 0.75 
             ? 4 : 3 
         : 1;
     
-    ctx.fillRect(randX, randY,size, size);
+    ctx.fillRect(randX, randY, size, size);
 }
 
-// @ts-ignore
 const dataUrl = canvas.toDataURL();
 document.getElementById("bg").style.cssText = `background: url(${dataUrl}) repeat;`;
