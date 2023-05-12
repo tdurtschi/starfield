@@ -1,0 +1,27 @@
+#bg-container {
+    z-index: -1;
+    position: absolute;
+    overflow-y: hidden;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  #bg {
+    height: calc(100% + 768px);
+    animation-name: MOVE-BG;
+    animation-duration: 407s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes MOVE-BG {
+    from {
+      transform: translateY(0);
+    }
+
+    to {
+      transform: translateY(-768px);
+    }
+  }
