@@ -36,4 +36,4 @@ for(let i = 0; i < clientWidth * FILL_RATIO; i++){
 
 // @ts-ignore
 const dataUrl = canvas.toDataURL();
-document.body.style.cssText = `background: url(${dataUrl}) repeat;`;
+document.getElementById("bg").style.cssText = `background: url(${dataUrl}) repeat;`;

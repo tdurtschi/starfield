@@ -5,33 +5,60 @@
   <meta charset="UTF-8" />
   <style>
     body {
-        padding: 0;
-        margin: 0;
-        height: 1000vh;
-        overflow-x:hidden;
-        animation-name: MOVE-BG;
-        animation-duration: 100s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
+      padding: 0;
+      margin: 0;
+      background-color: black;
+      color: rgb(147, 154, 187);
     }
 
-    #starfield {
-        background-color:black;
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    #bg-container {
+      z-index: 1;
+      position:absolute;
+      overflow-y: hidden;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 500vh;
+    }
+
+    #bg {
+      width: 100vw;
+      height: 700vh;
+      overflow-x: hidden;
+      animation-name: MOVE-BG;
+      animation-duration: 220s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
     }
 
     @keyframes MOVE-BG {
       from {
-        transform: translateX(0);
+        transform: translateY(0);
       }
-      to { 
-        transform: translateX(-187%);
+
+      to {
+        transform: translateY(-768px);
       }
     }
   </style>
 </head>
 
 <body>
-    <script type="text/javascript" src="starfield.js"></script>
+  <div id="bg-container">
+    <div id="bg"></div>
+  </div>
+  <div class="content">
+    <!-- <h1>Hello World</h1> -->
+  </div>
+  <script type="text/javascript" src="starfield.js"></script>
 </body>
 
 </html>
