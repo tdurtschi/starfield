@@ -64,18 +64,14 @@
 </head>
 
 <body>
-  <div class="content">
-    <div id="bg-container">
-      <div id="bg"></div>
-    </div>
-    <h1>Starry Night</h1>
+  <div id="content" class="content">
+    <h1>Starfield example</h1>
     <hr />
   </div>
-  <!-- <script type="text/javascript" src="starfield.js"></script> -->
   <script type="module">
     import starfield from "./starfield.js";
-    starfield({ 
-      target: "bg", 
+    starfield({
+      target: "content",
       fillRatio: 0.8
     });
   </script>
