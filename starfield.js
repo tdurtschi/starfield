@@ -13,13 +13,11 @@ const starColors = [
 
 const generateStarfieldImage = ({ fillRatio }) => {
     const canvas = document.createElement("canvas");
-    const scale = window.devicePixelRatio;
-    canvas.width = Math.floor(1024 * scale);
-    canvas.height = Math.floor(768 * scale);
+    canvas.width = Math.floor(1024);
+    canvas.height = Math.floor(768);
     const { width, height } = canvas;
 
     const ctx = canvas.getContext("2d");
-    ctx.scale(scale, scale);
     ctx.translate(0.5, 0.5);
 
     for (let i = 0; i < width * (fillRatio ?? FILL_RATIO); i++) {
