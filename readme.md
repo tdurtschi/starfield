@@ -1,7 +1,7 @@
 # Starfield
 Usage:
 ```js
-import starfield from "./starfield.js";
+import starfield from "./index.js";
 starfield({
     target: "elementId",
     fillRatio: 0.8

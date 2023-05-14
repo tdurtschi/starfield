@@ -38,11 +38,7 @@ const generateStarfieldImage = ({ fillRatio }) => {
     return dataUrl;
 }
 
-export default function Starfield(options) {
-    const { target } = options;
-    const dataUrl = generateStarfieldImage(options);
-
-    const targetElement = document.getElementById(target);
+const applyBackgroundToTarget = (dataUrl, targetElement) => {
     const bgContainer = document.createElement("div");
     bgContainer.id = "bg-container";
     targetElement.prepend(bgContainer);
@@ -52,4 +48,12 @@ export default function Starfield(options) {
     bgContainer.prepend(bgElement);
 
     bgElement.style.cssText = `background: url(${dataUrl}) repeat;`;
+}
+
+export default function Starfield(options) {
+    const { target } = options;
+    const dataUrl = generateStarfieldImage(options);
+
+    const targetElement = document.getElementById(target);
+    applyBackgroundToTarget(dataUrl, targetElement);
 }
