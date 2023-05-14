@@ -1,5 +1,5 @@
 #bg-container {
-    z-index: -1;
+    z-index: -10;
     position: absolute;
     overflow-y: hidden;
     top: 0;
@@ -9,11 +9,19 @@
   }
 
   #bg {
+    z-index: -10;
     height: calc(100% + 768px);
     animation-name: MOVE-BG;
     animation-duration: 407s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
+  }
+
+  #satellite {
+    z-index: -5;
+    position:absolute;
+    top: 0;
+    left: 0;
   }
 
   @keyframes MOVE-BG {
