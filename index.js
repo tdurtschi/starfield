@@ -52,37 +52,43 @@ const applyBackgroundToTarget = (dataUrl, targetElement) => {
     return bgElement;
 }
 
-const satellite = (targetElement, initialSpeed, repeatInterval) => () => {
+const satellite = (initialSpeed, repeatInterval) => () => {
     let canvas = document.querySelector("#satellite");
     if (!canvas) {
+        const targetElement = document.querySelector("#bg-container")
+
         canvas = document.createElement("canvas");
         canvas.id = "satellite";
         canvas.width = targetElement.clientWidth;
         canvas.height = targetElement.clientHeight;
 
-        targetElement.append(canvas);
+        targetElement.prepend(canvas);
     }
 
-    let yPos = Math.floor(Math.random() * (canvas.height - window.innerHeight - 400)) + 200;
-    let xPos = 0;
+    let isReversed = Math.random() > 0.5;
+    let yPosMin = 100;
+    let yPosMax = canvas.height - 100;
+    let yPos = Math.floor(Math.random() * yPosMax - yPosMin) + yPosMin;
+    let xPos = isReversed ? canvas.width : 0;
     const speed = initialSpeed * window.devicePixelRatio;
     const direction = (Math.random() * Math.PI / 1.5) - Math.PI / 3;
-    const amtToAddX = speed * Math.cos(direction);
+    const amtToAddX = (isReversed ? speed * -1 : speed) * Math.cos(direction);
     const amtToAddY = speed * Math.sin(direction);
     const ctx = canvas.getContext("2d");
     ctx.fillStyle = "#FFFFFF";
     ctx.translate(0.5, 0.5);
 
     const updateAnimation = () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(-10, -10, canvas.width + 20, canvas.height + 20);
         ctx.fillRect(xPos, yPos, 2, 2);
         xPos += amtToAddX;
         yPos += amtToAddY;
 
-        if (xPos <= canvas.width && yPos <= canvas.height) {
+        if (xPos <= canvas.width && xPos >= -10 && yPos <= canvas.height && yPos >= -10) {
             requestAnimationFrame(updateAnimation);
         } else {
             console.info("Done with Satellite!")
+            ctx.clearRect(-10, -10, canvas.width + 20, canvas.height + 20);
             setTimeout(() => doSatellite && doSatellite(), repeatInterval);
         }
     };
@@ -95,9 +101,9 @@ export default function Starfield(options) {
     const dataUrl = generateStarfieldImage(options);
 
     const targetElement = document.getElementById(target);
-    const backgroundElement = applyBackgroundToTarget(dataUrl, targetElement);
+    applyBackgroundToTarget(dataUrl, targetElement);
 
-    doSatellite = satellite(backgroundElement, satelliteSpeed, satelliteInterval)
+    doSatellite = satellite(satelliteSpeed, satelliteInterval)
 
     setTimeout(doSatellite, satelliteInterval ?? 5000);
 }

@@ -1,16 +1,21 @@
 #bg-container {
     z-index: -10;
     position: absolute;
-    overflow-y: hidden;
+    overflow: hidden;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
+    /* top: 40%;
+    left: 40%;
+    height: 20%;
+    width: 20%; */
   }
 
   #bg {
     z-index: -10;
-    height: calc(100% + 768px);
+    height: 400%;
+    width: 300%;
     animation-name: MOVE-BG;
     animation-duration: 407s;
     animation-timing-function: linear;
@@ -26,10 +31,10 @@
 
   @keyframes MOVE-BG {
     from {
-      transform: translateY(0);
+      transform: translateY(-37.5%) translateX(-33%) rotate(-45deg) ;
     }
 
     to {
-      transform: translateY(-768px);
+      transform: translateY(-37.5%) translateX(-33%) rotate(-45deg) translateY(-768px) translateX(1024px);
     }
   }
