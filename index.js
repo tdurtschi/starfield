@@ -89,6 +89,7 @@ const satellite = (initialSpeed, repeatInterval) => () => {
         } else {
             console.info("Done with Satellite!")
             ctx.clearRect(-10, -10, canvas.width + 20, canvas.height + 20);
+            canvas.remove();
             setTimeout(() => doSatellite && doSatellite(), repeatInterval);
         }
     };
